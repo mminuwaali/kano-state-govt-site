@@ -10,8 +10,14 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
-from shutil import which
+from environ import Env
 from pathlib import Path
+from shutil import which
+from dj_database_url import config
+
+env = Env()
+Env.read_env()
+Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -24,15 +30,16 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = "django-insecure-g#aiizqqw=xb7)#a%cubc)jwa%^fbxf%4f0=@w0$vc0gv+%sc%"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 TAILWIND_APP_NAME = "theme"
 
+NPM_BIN_PATH = which("npm")
+
 INTERNAL_IPS = ["127.0.0.1"]
 
-NPM_BIN_PATH = which("npm")
+DEBUG = env.bool("DEBUG", False)
 
 # Application definition
 
@@ -45,6 +52,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     # 3rd party apps
     "tailwind",
+    "storages",
     "theme",
     # my own apps
     "account.apps.AccountConfig",
@@ -86,12 +94,7 @@ WSGI_APPLICATION = "website.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "website/db.sqlite3",
-    }
-}
+DATABASES = {"default": config(default="sqlite:///db.sqlite3")}
 
 
 # Password validation
@@ -136,7 +139,28 @@ MEDIA_ROOT = BASE_DIR / "media"
 
 STATIC_ROOT = BASE_DIR / "static"
 
+if not DEBUG:
+
+    DEFAULT_FILE_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"
+
+    STATICFILES_STORAGE = "whitenoise.storage.CompressedStaticFilesStorage"
+
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+# s3 config
+
+AWS_ACCESS_KEY_ID = env.str("AWS_ACCESS_KEY_ID")
+
+AWS_S3_REGION_NAME = env.str("AWS_S3_REGION_NAME")
+
+AWS_SECRET_ACCESS_KEY = env.str("AWS_SECRET_ACCESS_KEY")
+
+AWS_STORAGE_BUCKET_NAME = env.str("AWS_STORAGE_BUCKET_NAME")
+
+
+# For serving static files directly from S3
+AWS_S3_VERIFY = AWS_S3_USE_SSL = True
