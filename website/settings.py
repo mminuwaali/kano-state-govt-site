@@ -153,13 +153,13 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 # s3 config
 
-AWS_ACCESS_KEY_ID = env.str("AWS_ACCESS_KEY_ID")
+AWS_ACCESS_KEY_ID = env.str("AWS_ACCESS_KEY_ID", "")
 
-AWS_S3_REGION_NAME = env.str("AWS_S3_REGION_NAME")
+AWS_S3_REGION_NAME = env.str("AWS_S3_REGION_NAME", "")
 
-AWS_SECRET_ACCESS_KEY = env.str("AWS_SECRET_ACCESS_KEY")
+AWS_SECRET_ACCESS_KEY = env.str("AWS_SECRET_ACCESS_KEY", "")
 
-AWS_STORAGE_BUCKET_NAME = env.str("AWS_STORAGE_BUCKET_NAME")
+AWS_STORAGE_BUCKET_NAME = env.str("AWS_STORAGE_BUCKET_NAME", "")
 
 
 # For serving static files directly from S3
