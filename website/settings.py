@@ -143,9 +143,9 @@ STATIC_ROOT = BASE_DIR / "static"
 
 if not DEBUG:
 
-    DEFAULT_FILE_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"
+    # DEFAULT_FILE_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"
 
-    # STATICFILES_STORAGE = "whitenoise.storage.CompressedStaticFilesStorage"
+    STATICFILES_STORAGE = "whitenoise.storage.CompressedStaticFilesStorage"
 
 
 # Default primary key field type
@@ -155,14 +155,14 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 # s3 config
 
-AWS_ACCESS_KEY_ID = env.str("AWS_ACCESS_KEY_ID", "")
+# AWS_ACCESS_KEY_ID = env.str("AWS_ACCESS_KEY_ID", "")
 
-AWS_S3_REGION_NAME = env.str("AWS_S3_REGION_NAME", "")
+# AWS_S3_REGION_NAME = env.str("AWS_S3_REGION_NAME", "")
 
-AWS_SECRET_ACCESS_KEY = env.str("AWS_SECRET_ACCESS_KEY", "")
+# AWS_SECRET_ACCESS_KEY = env.str("AWS_SECRET_ACCESS_KEY", "")
 
-AWS_STORAGE_BUCKET_NAME = env.str("AWS_STORAGE_BUCKET_NAME", "")
+# AWS_STORAGE_BUCKET_NAME = env.str("AWS_STORAGE_BUCKET_NAME", "")
 
 
-# For serving static files directly from S3
-AWS_S3_VERIFY = AWS_S3_USE_SSL = True
+# # For serving static files directly from S3
+# AWS_S3_VERIFY = AWS_S3_USE_SSL = True

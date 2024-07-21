@@ -3,7 +3,7 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls.static import static
 
-urlpatterns = [
+urlpatterns = [ 
     path("admin/", admin.site.urls),
     path("", include("landing.urls")),
     path("auth/", include("account.urls")),
