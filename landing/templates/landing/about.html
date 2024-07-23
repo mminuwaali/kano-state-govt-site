@@ -1,8 +1,22 @@
 {% extends 'landing.html' %}
+{% load static %}
 
 {% block content %}
-  <section class="w-full bg-blue-900 brightness-75 text-white font-bold flex items-center justify-center aspect-[3.5] min-h-80">
+  {% comment %} <section class="w-full bg-blue-900 brightness-75 text-white font-bold flex items-center justify-center aspect-[3.5] min-h-80">
     <h1 class="capitalize text-3xl md:text-6xl">About Kano State</h1>
+  </section> {% endcomment %}
+  <section class="bg-gray-900 w-full">
+    <div class="gap-16 items-center py-8 px-4 mx-auto max-w-screen-xl lg:grid lg:grid-cols-2 lg:py-16 lg:px-6">
+      <div class="grid grid-cols-2 gap-4 mt-8">
+        <img class="w-full rounded-lg" src="{% static 'governor.jpeg' %}" alt="office content 1" />
+        <img class="mt-4 w-full lg:mt-10 rounded-lg" src="{% static 'deputy.jpeg' %}" alt="office content 2" />
+      </div>
+      <div class="font-light text-gray-500 sm:text-lg dark:text-gray-400">
+        <h2 class="mb-4 text-4xl font-extrabold text-gray-900 dark:text-white">Driving Innovation and Progress</h2>
+        <p class="mb-4">We are dedicated to implementing innovative solutions that drive progress and improve the quality of life for all residents. Our approach is centered on strategic planning, efficient resource management, and community involvement.</p>
+        <p>Through collaboration and innovation, we strive to achieve sustainable development and economic prosperity for Kano State.</p>
+      </div>
+    </div>
   </section>
 
   <section class="w-full flex flex-wrap gap-8 px-[10%]">

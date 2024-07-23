@@ -7,23 +7,19 @@
     <meta charset="UTF-8" />
     <title>Governemnt Site</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous" />
   </head>
-  <body class="w-screen min-h-screen flex flex-col overflow-x-hidden items-center justify-start overflow-auto">
-    <header class="w-full sticky top-0 z-50 flex flex-col bg-white">
-      <nav class="px-[5%] py-4 flex items-center justify-end gap-4 bg-black">
-        <a href="https://flowbite.com" class="flex items-center mr-auto space-x-3 rtl:space-x-reverse"><img src="{% static 'logo.png' %}" class="h-8" alt="Flowbite Logo" /></a>
+  {% comment %} <body class="w-screen min-h-screen flex flex-col overflow-x-hidden items-center justify-start overflow-auto">
+    <header class="w-full flex items-center text-gray-700 bg-white dark-mode:text-gray-200 dark-mode:bg-gray-800 px-20">
+      <div class="flex flex-row items-center justify-between p-4">
+        <a href="#" class="text-lg font-semibold tracking-widest text-gray-900 uppercase rounded-lg dark-mode:text-white focus:outline-none focus:shadow-outline">Flowtrail UI</a>
+      </div>
 
-        <a href="{% url 'landing:index-view' %}" class="text-sm text-gray-500 dark:text-white hover:underline">(555) 412-1234</a>
-        <a href="{% url 'account:signin-view' %}" class="text-sm text-blue-600 dark:text-blue-500 hover:underline">Login</a>
-      </nav>
-
-      <nav class="px-[5%] py-4 flex items-center justify-start gap-8 capitalize bg-gray-700">
-        <a href="{% url 'landing:index-view' %}" class="text-gray-900 dark:text-white hover:underline">Home</a>
-        <a href="{% url 'blogging:index-view' %}" class="text-gray-900 dark:text-white hover:underline">Blog</a>
-        <a href="{% url 'landing:service-view' %}" class="text-gray-900 dark:text-white hover:underline">Services</a>
-        <a href="{% url 'landing:government-view' %}" class="text-gray-900 dark:text-white hover:underline">Governments</a>
-        <a href="{% url 'landing:about-view' %}" class="text-gray-900 dark:text-white hover:underline">About Us</a>
-        <a href="{% url 'landing:contact-view' %}" class="text-gray-900 dark:text-white hover:underline">Contact Us</a>
+      <nav class="flex items-center grow justify-end">
+        <a class="px-4 py-2 mt-2 text-sm font-semibold no-underline bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline" href="#">Blog</a>
+        <a class="px-4 py-2 mt-2 text-sm font-semibold no-underline bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline" href="#">Portfolio</a>
+        <a class="px-4 py-2 mt-2 text-sm font-semibold no-underline bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline" href="#">About</a>
+        <a class="px-4 py-2 mt-2 text-sm font-semibold no-underline bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline" href="#">Contact</a>
       </nav>
     </header>
 
@@ -113,5 +109,10 @@
         </div>
       </div>
     </footer>
+  </body> {% endcomment %}
+  <body class="w-full flex flex-col overflow-auto">
+    <main class="grow flex flex-col">
+      {% block content %}{% endblock content %}
+    </main>
   </body>
 </html>
