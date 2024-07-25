@@ -8,6 +8,7 @@ urlpatterns = [
     path("", include("landing.urls")),
     path("auth/", include("account.urls")),
     path("blog/", include("blogging.urls")),
+    path('markdownx/', include('markdownx.urls')),
     path("__reload__/", include("django_browser_reload.urls")),
 ]
 

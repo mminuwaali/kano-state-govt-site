@@ -1,7 +1,9 @@
 from . import models
 from django.shortcuts import render
+from website.decorator import set_sectors_with_governance
 
 
+@set_sectors_with_governance
 def index_view(request):
     blogs = models.Blog.objects.all()
 
@@ -9,6 +11,7 @@ def index_view(request):
     return render(request, "blogging/index.html", context)
 
 
+@set_sectors_with_governance
 def detail_view(request, id):
     blog = models.Blog.objects.get(id=id)
 

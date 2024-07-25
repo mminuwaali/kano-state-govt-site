@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     # 3rd party apps
     "whitenoise",
+    "markdownx",
     "tailwind",
     "storages",
     "theme",
