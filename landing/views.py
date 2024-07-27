@@ -1,3 +1,4 @@
+from . import models
 from blogging.models import Blog
 from django.shortcuts import render
 from website.decorator import set_sectors_with_governance
@@ -27,5 +28,8 @@ def service_view(request):
 
 
 @set_sectors_with_governance
-def government_view(request):
-    return render(request, "landing/government.html")
+def government_view(request, id):
+    member = models.Govenance.objects.get(id=id)
+
+    context = {"member": member}
+    return render(request, "landing/government.html", context)

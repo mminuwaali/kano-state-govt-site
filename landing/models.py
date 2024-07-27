@@ -19,5 +19,9 @@ class Govenance(models.Model):
     sector = models.ForeignKey(Sector, models.PROTECT)
     created_at = models.DateTimeField(auto_now_add=True)
 
+    @property
+    def formatted_content(self):
+        return markdownify(self.content)
+
     def __str__(self) -> str:
         return f"{self.name} - {self.sector.name}"
