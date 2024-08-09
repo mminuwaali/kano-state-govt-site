@@ -52,9 +52,11 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     # 3rd party apps
     "django_browser_reload",
+    "cloudinary_storage",
+    "cloudinary",
     "whitenoise",
     "markdownx",
-    "heroicons",    
+    "heroicons",
     "tailwind",
     "storages",
     "theme",
@@ -68,7 +70,7 @@ MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
-    "django_browser_reload.middleware.BrowserReloadMiddleware", 
+    "django_browser_reload.middleware.BrowserReloadMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
@@ -141,15 +143,15 @@ MEDIA_URL = "media/"
 
 STATIC_URL = "static/"
 
-MEDIA_ROOT = BASE_DIR / "media"
+MEDIA_ROOT = BASE_DIR / "kano-state-govt/media"
 
-STATIC_ROOT = BASE_DIR / "static"
+STATIC_ROOT = BASE_DIR / "kano-state-govt/static"
 
 if not DEBUG:
 
-    # DEFAULT_FILE_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"
-
     STATICFILES_STORAGE = "whitenoise.storage.CompressedStaticFilesStorage"
+
+    DEFAULT_FILE_STORAGE = "cloudinary_storage.storage.MediaCloudinaryStorage"
 
 
 # Default primary key field type
@@ -157,16 +159,12 @@ if not DEBUG:
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-# s3 config
+# cloudinary
 
-# AWS_ACCESS_KEY_ID = env.str("AWS_ACCESS_KEY_ID", "")
-
-# AWS_S3_REGION_NAME = env.str("AWS_S3_REGION_NAME", "")
-
-# AWS_SECRET_ACCESS_KEY = env.str("AWS_SECRET_ACCESS_KEY", "")
-
-# AWS_STORAGE_BUCKET_NAME = env.str("AWS_STORAGE_BUCKET_NAME", "")
-
-
-# # For serving static files directly from S3
-# AWS_S3_VERIFY = AWS_S3_USE_SSL = True
+CLOUDINARY_STORAGE = {
+    "API_KEY": env.str("CLOUDINARY_API_KEY", "999795558213546"),
+    # ...
+    "CLOUD_NAME": env.str("CLOUDINARY_CLOUD_NAME", "dusshsb1n"),
+    # ...
+    "API_SECRET": env.str("CLOUDINARY_API_SECRET", "VXoDy-VVHLZJsQEokUGfqO0sKzQ"),
+}
