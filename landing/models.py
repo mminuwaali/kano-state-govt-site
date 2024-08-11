@@ -15,6 +15,7 @@ class Sector(models.Model):
 class Govenance(models.Model):
     content = MarkdownxField(default="")
     name = models.CharField(max_length=200)
+    image = models.ImageField(null=True, blank=True)
     updated_at = models.DateTimeField(auto_now=True)
     sector = models.ForeignKey(Sector, models.PROTECT)
     created_at = models.DateTimeField(auto_now_add=True)

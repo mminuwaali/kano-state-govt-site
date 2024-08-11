@@ -9,5 +9,11 @@
     <h2 class="text-white font-bold capitalize text-xl md:text-6xl drop-shadow-md">{{ member.name }}</h2>
   </section>
 
+  {% if member.image %}
+    <section class="w-full flex felx-col items-start justify-start gap-4 px-[10%] py-10">
+      <img src="{{ member.image.url }}" alt="" class="w-full max-h-screen object-contain" />
+    </section>
+  {% endif %}
+
   <section class="w-full flex felx-col items-start justify-start gap-4 px-[10%] py-10">{{ member.formatted_content|safe }}</section>
 {% endblock %}
