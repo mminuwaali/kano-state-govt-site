@@ -9,11 +9,12 @@
     <h2 class="text-white font-bold capitalize text-xl md:text-6xl drop-shadow-md">{{ member.name }}</h2>
   </section>
 
-  {% if member.image %}
-    <section class="w-full flex felx-col items-start justify-start gap-4 px-[10%] py-10">
+  <section class="w-full flex flex-col gap-4 items-start justify-start gap-4 px-[10%] py-10">
+      {% if member.image %}
       <img src="{{ member.image.url }}" alt="" class="w-full max-h-screen object-contain" />
+      {% endif %}
+      <h2 class="w-full capitalize font-bold text-center md:text-left text-4xl">{{member.name}}</h2>
     </section>
-  {% endif %}
 
-  <section class="w-full flex felx-col items-start justify-start gap-4 px-[10%] py-10">{{ member.formatted_content|safe }}</section>
+  <section class="w-full flex flex-col items-start justify-start gap-4 px-[10%] py-10 text-justify md:text-left">{{ member.formatted_content|safe }}</section>
 {% endblock %}

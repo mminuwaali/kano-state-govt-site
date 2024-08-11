@@ -13,4 +13,4 @@ class GovenanceAdmin(admin.ModelAdmin):
     list_filter = ["sector"]
     search_fields = ["name"]
     fields = ["sector", "name", "content"]
-    list_display = ["name", "sector", "created_at", "updated_at"]
+    list_display = ["name","image", "sector", "created_at", "updated_at"]
