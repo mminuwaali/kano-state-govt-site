@@ -37,20 +37,18 @@
       class="grow flex gap-4 md:gap-20 whitespace-nowrap py-4 md:py-0 rounded-sm md:rounded-none items-center justify-end flex-col md:flex-row right-4 md:right-auto top-32 transition-all shadow-md md:shadow-none bg-white md:top-auto absolute md:relative w-0 md:w-auto">
       <a href="{% url 'landing:about-view' %}"
         class="text-slate-700 no-underline md:underline underline-offset-2 hover:no-underline">about</a>
-      <a href="{% url 'blogging:index-view' %}"
-        class="text-slate-700 no-underline md:underline underline-offset-2 hover:no-underline">news</a>
       <a href="{% url 'landing:contact-view' %}"
         class="text-slate-700 no-underline md:underline underline-offset-2 hover:no-underline">contact us</a>
       <div
         class="text-slate-700 md:underline no-underline underline-offset-2 hover:no-underline relative peer [&:hover>div]:flex">
         <span class="">government</span>
-        <div class="absolute top-full right-4 w-60 bg-white shadow-2xl z-10 hidden transition-all flex-col text-sm">
+        <div class="absolute top-full right-0 md:right-4 w-60 bg-white shadow-2xl z-10 hidden transition-all flex-col text-sm">
           {% for sector in request.sectors %}
           <button style="font-variant: small-caps;"
             class="relative w-full no-underline px-4 py-2 text-slate-600 hover:bg-slate-600 hover:text-white transition-all text-left group">
             <span>{{ sector.name|lower }}</span>
             <div
-              class="absolute top-0 right-56 w-60 bg-white shadow-xl z-20 group-hover:flex hidden transition-all flex-col text-sm">
+              class="absolute bottom-full md:bottom-[initial] md:top-0 -right-14 md:right-56 w-60 bg-white shadow-xl z-20 group-hover:flex hidden transition-all flex-col text-sm">
               {% for govenance in sector.govenance_set.all %}
               <a href="{% url 'landing:government-view' govenance.id %}" style="font-variant: small-caps;"
                 class="relative w-full no-underline px-4 py-2 text-slate-600 hover:bg-slate-600 hover:text-white transition-all text-left group">
@@ -62,6 +60,12 @@
           {% endfor %}
         </div>
       </div>
+      <a href="{% url 'landing:mda-view' %}"
+        class="text-slate-700 no-underline md:underline underline-offset-2 hover:no-underline uppercase">mda</a>
+        <a href="{% url 'landing:project-view' %}"
+        class="text-slate-700 no-underline md:underline underline-offset-2 hover:no-underline">project</a>
+        <a href="{% url 'blogging:index-view' %}"
+          class="text-slate-700 no-underline md:underline underline-offset-2 hover:no-underline">news <span class="lowercase">and</span> update</a>
     </nav>
 
     <div class="h-6 w-6 flex md:hidden cursor-pointer" onclick="toggleNavbar()">
@@ -81,13 +85,13 @@
 
         <p class="max-w-md mx-auto mt-4 text-gray-500 dark:text-gray-400">Kano State Government</p>
 
-        <div class="flex flex-col mt-4 sm:flex-row sm:items-center sm:justify-center">
-          <button
-            class="w-full px-5 py-2 text-sm tracking-wide text-green-600 capitalize transition-colors duration-300 transform bg-white rounded-md sm:mx-2 sm:order-2 sm:w-auto hover:bg-white border-2 border-green-600 focus:outline-none focus:ring focus:ring-green-300 focus:ring-opacity-80">Know
-            more</button>
-          <button
-            class="w-full px-5 py-2 text-sm tracking-wide text-white capitalize transition-colors duration-300 transform bg-green-600 rounded-md sm:mx-2 sm:order-2 sm:w-auto hover:bg-green-500 focus:outline-none focus:ring focus:ring-green-300 focus:ring-opacity-80">Get
-            started</button>
+        <div class="flex flex-col gap-2 mt-4 sm:flex-row sm:items-center sm:justify-center">
+          <a href="{% url 'landing:about-view' %}"
+            class="w-full px-5 py-2 no-underline text-sm tracking-wide text-green-600 capitalize transition-colors duration-300 transform bg-white rounded-md sm:mx-2 sm:order-2 sm:w-auto hover:bg-white border-2 border-green-600 focus:outline-none focus:ring focus:ring-green-300 focus:ring-opacity-80">Know
+            more</a>
+          <a href="{% url 'landing:mda-view' %}"
+            class="w-full px-5 py-2 no-underline text-sm tracking-wide text-white capitalize transition-colors duration-300 transform bg-green-600 rounded-md sm:mx-2 sm:order-2 sm:w-auto hover:bg-green-500 focus:outline-none focus:ring focus:ring-green-300 focus:ring-opacity-80">Get
+            started</a>
         </div>
       </div>
 

@@ -26,3 +26,26 @@ class Govenance(models.Model):
 
     def __str__(self) -> str:
         return f"{self.name} - {self.sector.name}"
+
+
+class ProjectStatus(models.Model):
+    name = models.CharField(max_length=20)
+
+    def __str__(self):
+        return self.name
+
+
+class Project(models.Model):
+    image = models.ImageField()
+    name = models.CharField(max_length=200)
+    description = MarkdownxField(default="")
+    updated_at = models.DateTimeField(auto_now=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    status = models.ForeignKey(ProjectStatus, on_delete=models.PROTECT)
+
+    @property
+    def formatted_description(self):
+        return markdownify(self.description)
+
+    def __str__(self):
+        return f"{self.name} - {self.status.name}"

@@ -13,4 +13,18 @@ class GovenanceAdmin(admin.ModelAdmin):
     list_filter = ["sector"]
     search_fields = ["name"]
     fields = ["sector", "name", "content"]
-    list_display = ["name","image", "sector", "created_at", "updated_at"]
+    list_display = ["name", "image", "sector", "created_at", "updated_at"]
+
+
+@admin.register(models.ProjectStatus)
+class ProjectStatusAdmin(admin.ModelAdmin):
+    list_display = ["name"]
+    search_fields = ["name"]
+
+
+@admin.register(models.Project)
+class ProjectAdmin(admin.ModelAdmin):
+    list_filter = ["status"]
+    search_fields = ["name"]
+    fields = ["name", "description", "image", "status"]
+    list_display = ["name", "status", "created_at", "updated_at"]

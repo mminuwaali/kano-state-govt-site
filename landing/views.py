@@ -20,8 +20,30 @@ def about_view(request):
 
 
 @set_sectors_with_governance
+def mda_view(request):
+    return render(request, "landing/mda.html")
+
+
+@set_sectors_with_governance
 def service_view(request):
     return render(request, "landing/service.html")
+
+
+@set_sectors_with_governance
+def project_view(request):
+    projects = models.Project.objects.all()
+    statuses = models.ProjectStatus.objects.all()
+
+    filter_attr = request.GET.get("filter")
+
+    if filter_attr:
+        projects = projects.filter(status__id=int(filter_attr))
+
+    context = {
+        "projects": projects,
+        "statuses": statuses,
+    }
+    return render(request, "landing/project.html", context)
 
 
 @set_sectors_with_governance

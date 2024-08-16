@@ -1,0 +1,27 @@
+{% extends 'landing.html' %}
+
+{% block content %}
+  <section class="flex items-center mt-6 overflow-y-hidden gap-x-4 whitespace-nowrap mx-[10%]">
+    <a href="{% url 'landing:project-view' %}" class="px-3 py-1.5 text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg capitalize">All</a>
+    {% for status in statuses %}
+      <a href="{% url 'landing:project-view' %}?filter={{ status.id }}" class="px-3 py-1.5 text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg capitalize">{{ status.name|title }}</a>
+    {% endfor %}
+  </section>
+
+  <section class="w-full flex flex-wrap gap-10 py-4 px-[10%]">
+    {% for project in projects %}
+      <div class="my-8 rounded shadow-lg shadow-gray-200 dark:shadow-gray-900 bg-white dark:bg-gray-800 duration-300 hover:-translate-y-1 basis-96">
+        <div class="cursor-pointer">
+          <figure>
+            <img src="{{ project.image.url }}" class="rounded-t h-72 w-full object-cover" />
+
+            <figcaption class="p-4">
+              <p class="text-lg mb-4 font-bold leading-relaxed text-gray-800 dark:text-gray-300" x-text="post.title">{{ project.name }}</p>
+              <small class="leading-5 text-gray-500 dark:text-gray-400">{{ project.formatted_description|safe }}</small>
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    {% endfor %}
+  </section>
+{% endblock %}
