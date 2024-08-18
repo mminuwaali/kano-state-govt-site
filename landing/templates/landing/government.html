@@ -1,20 +1,31 @@
 {% extends 'landing.html' %}
 
 {% block head %}
-  <style></style>
+  <style>
+    #content {
+      p {
+        color: #888;
+        font-size: 1.4em;
+        text-align: justify;
+    
+        @media screen and (max-width: 768px) {
+          font-size: 1em;
+        }
+      }
+    }
+  </style>
 {% endblock %}
 
 {% block content %}
-  <section class="w-full h-80 flex items-center justify-center from-green-300 to-green-700 bg-gradient-to-br">
+  <section class="w-full py-20 flex items-center justify-center from-green-300 to-green-700 bg-gradient-to-br">
     <h2 class="text-white font-bold capitalize text-xl md:text-6xl drop-shadow-md">{{ member.name }}</h2>
   </section>
 
-  <section class="w-full flex flex-col gap-4 items-start justify-start gap-4 px-[10%] py-10">
-      {% if member.image %}
-      <img src="{{ member.image.url }}" alt="" class="w-full max-h-screen object-contain" />
-      {% endif %}
-      <h2 class="w-full capitalize font-bold text-center md:text-left text-4xl">{{member.name}}</h2>
-    </section>
+  <section class="w-full flex flex-col gap-4 items-start justify-start px-[10%] py-10">
+    {% if member.image %}
+      <img src="{{ member.image.url }}" alt="" class="w-full max-h-[60vh] object-contain" />
+    {% endif %}
+  </section>
 
-  <section class="w-full flex flex-col items-start justify-start gap-4 px-[10%] py-10 text-justify md:text-left">{{ member.formatted_content|safe }}</section>
+  <section id="content" class="w-full flex flex-col items-start justify-start gap-4 px-[10%] py-10 text-justify md:text-left">{{ member.formatted_content|safe }}</section>
 {% endblock %}

@@ -1,7 +1,6 @@
-from . import models
+from . import forms, models
 from blogging.models import Blog
 from django.contrib import messages
-from account.forms import ContactForm
 from django.shortcuts import render, redirect
 from website.decorator import set_sectors_with_governance
 
@@ -57,7 +56,7 @@ def government_view(request, id):
 @set_sectors_with_governance
 def contact_view(request):
     if request.method == "POST":
-        form = ContactForm(request.POST)
+        form = forms.ContactForm(request.POST)
         if form.is_valid():
             form.save()
         else:

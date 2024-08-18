@@ -12,7 +12,7 @@ class SectorAdmin(admin.ModelAdmin):
 class GovenanceAdmin(admin.ModelAdmin):
     list_filter = ["sector"]
     search_fields = ["name"]
-    fields = ["sector", "name", "content"]
+    fields = ["sector", "image", "name", "content"]
     list_display = ["name", "image", "sector", "created_at", "updated_at"]
 
 

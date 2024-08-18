@@ -61,7 +61,6 @@ INSTALLED_APPS = [
     "storages",
     "theme",
     # my own apps
-    "account.apps.AccountConfig",
     "landing.apps.LandingConfig",
     "blogging.apps.BloggingConfig",
 ]
@@ -83,7 +82,7 @@ ROOT_URLCONF = "website.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [],
+        "DIRS": [BASE_DIR/"website/teplates"],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
