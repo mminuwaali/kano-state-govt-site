@@ -142,9 +142,9 @@ MEDIA_URL = "media/"
 
 STATIC_URL = "static/"
 
-MEDIA_ROOT = BASE_DIR / "kano-state-govt/media"
+MEDIA_ROOT = BASE_DIR / "media"
 
-STATIC_ROOT = BASE_DIR / "kano-state-govt/static"
+STATIC_ROOT = BASE_DIR / "static"
 
 if not DEBUG:
 
