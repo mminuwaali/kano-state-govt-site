@@ -11,9 +11,12 @@
 </style>
 
 <header class="w-full gap-4 flex items-center justify-between bg-white z-50 top-0 sticky shadow py-4 px-[10%]">
-  <a href="{% url 'landing:index-view' %}" class=""><img src="{% static 'logo.png' %}" alt="" class="h-14" /></a>
+  <a href="{% url 'landing:index-view' %}" class="flex items-center gap-2 flex-1 z-10">
+    <img src="{% static 'logo.png' %}" alt="" class="h-14 md:h-20" />
+    <span class="capitalize font-semibold text-center leading-4 md:text-base text-sm">kano state government</span>
+  </a>
 
-  <nav class="z-50 bg-white flex-auto flex-col md:flex-row flex items-end md:items-center pl-4 p-[25%_15%] duration-500 md:p-0 md:justify-end whitespace-nowrap gap-10 fixed md:relative top-0 right-0 h-screen md:h-full w-4/5 md:w-full transition-all opacity-0 md:opacity-100 translate-x-full md:translate-x-0" style="font-variant: small-caps;">
+  <nav class="z-50 bg-white md:bg-transparent flex-auto flex-col md:flex-row flex items-end md:items-center pl-4 p-[25%_15%] duration-500 md:p-0 md:justify-end whitespace-nowrap gap-10 fixed md:relative top-0 right-0 h-screen md:h-full w-4/5 md:w-full transition-all opacity-0 md:opacity-100 translate-x-full md:translate-x-0" style="font-variant: small-caps;">
     <button class="w-8 h-8 flex md:hidden absolute top-4 right-8" onclick="document.querySelector('header nav').classList.add('translate-x-full', 'opacity-0')">
       <input type="checkbox" class="w-full h-full cursor-pointer absolute top-0 left-0 opacity-0" />
       {% heroicon_outline 'x-mark' %}
